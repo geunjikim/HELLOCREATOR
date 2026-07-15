@@ -1131,10 +1131,10 @@ const EN_COVERING = {
   shortfur:'covered in a short bumpy fuzzy clay texture', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
-  1:'a single large round eye sculpted directly into the clay, with a smooth glossy black pupil and a matte white sclera (not a plastic craft eye, not a googly eye)',
-  2:'two large round eyes sculpted directly into the clay, slightly mismatched in size, each with a smooth glossy black pupil and a matte white sclera (not plastic craft eyes, not googly eyes)',
-  3:'three round eyes sculpted directly into the clay, one extra eye positioned above the other two, each with a smooth glossy black pupil and a matte white sclera (not plastic craft eyes, not googly eyes)',
-  8:'eight small round eyes sculpted directly into the clay, clustered on the face like a spider, each with a smooth glossy black pupil and a matte white sclera (not plastic craft eyes, not googly eyes)'
+  1:'a single large round eye sculpted directly into the clay, with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
+  2:'two large round eyes sculpted directly into the clay, slightly mismatched in size, each with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
+  3:'three round eyes sculpted directly into the clay, one extra eye positioned above the other two, each with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
+  8:'eight small round eyes sculpted directly into the clay, clustered on the face like a spider, each with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not plastic craft eyes, not googly eyes)'
 };
 const EN_HORNS = {
   0:'a smooth rounded head with no horns', 1:'one small rounded clay horn on top of the head',
@@ -1222,7 +1222,7 @@ function buildResultSheet(state,name){
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
     `small round blush-colored accent dots on the cheeks for extra cuteness, `+
     `${EN_HABITAT_FEATURE[habitat]}, `+
-    `a two-tone body color scheme dominated by ${scheme.habitatName} (about 60% of the body) with ${scheme.secondaryName} as a secondary tone (about 30%), `+
+    `a two-tone body color scheme dominated by highly saturated vivid ${scheme.habitatName} (about 60% of the body) with saturated vivid ${scheme.secondaryName} as a secondary tone (about 30%), bold rich candy-like colors, not pastel, not desaturated, not washed out, `+
     `${EN_PATTERN[tendency]}, `+
     `${EN_POSE[personality]}, `+
     `${EN_PERSONALITY_FEATURE[personality] ? EN_PERSONALITY_FEATURE[personality]+', ' : ''}`+
