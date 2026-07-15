@@ -1101,7 +1101,7 @@ const HABITAT_FEATURE_KR = {
   forest:'길고 복슬복슬한 꼬리', sky:'등에 작은 양 날개'
 };
 const EN_HABITAT_FEATURE = {
-  sea:'a pair of tiny gills on the sides of the neck, and no nose at all — a smooth flat face with no nose',
+  sea:'a pair of tiny fish-like gills on the sides of the neck, with small shimmering fish-scale texture patches around the neck and gill area, and no nose at all — a smooth flat face with no nose',
   land:'a small cute button nose',
   cave:'a pair of small rounded ears on either side of the head, and no nose at all — a smooth flat face with no nose',
   forest:'a long fluffy bushy tail, and no nose at all — a smooth flat face with no nose',
@@ -1117,19 +1117,19 @@ const EN_PERSONALITY_FEATURE = {
 const GENTLE_FEATURE_KR = {withLegs:'손바닥에 도톰한 육구', noLegs:'길게 늘어진 혓바닥'};
 const EN_GENTLE_FEATURE = {withLegs:'soft paw pads on the palms', noLegs:'a long dangling tongue sticking out'};
 const EN_LEGS = {
-  0:'absolutely no legs, no feet, and no arms of any kind — the body is a rounded legless blob resting directly on the ground, with a small cute tail sticking out from the back instead of legs',
+  0:'absolutely no legs, no feet, and no arms of any kind — the body is a rounded legless blob resting directly on the ground',
   2:'two short stubby clay legs', 4:'four small rounded clay legs',
   6:'six thin spindly clay legs like an insect'
 };
 const EN_COVERING = {
-  longfur:'covered in long uneven tufts of clay fur', scales:'textured with small overlapping clay scale patterns',
-  shortfur:'covered in a short, fine, fuzzy plush-like clay texture resembling short fur (a soft fuzzy nap texture, not dots, not bumps, not raised studs)', feathers:'covered in soft rounded clay feather shapes'
+  longfur:'covered in long fur that looks like thick knitted yarn or wool strands, long uneven tufts', scales:'textured with small overlapping clay scale patterns',
+  shortfur:'covered in a short, dense felt-like fabric texture (soft felted wool fabric texture), not dots, not bumps, not raised studs', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
-  1:'a single large round eye sculpted directly into the clay, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
-  2:'two large round eyes sculpted directly into the clay, each possibly looking a slightly different direction for a charming quirky look, slightly mismatched in size, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
-  3:'three round eyes sculpted directly into the clay, each possibly looking a slightly different direction for a charming quirky look, one extra eye positioned above the other two, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
-  8:'eight small round eyes sculpted directly into the clay, each possibly looking a slightly different direction for a charming quirky look, clustered on the face like a spider, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)'
+  1:'a single moderately-sized round eye (not oversized, taking up only a modest portion of the face) sculpted directly into the clay, with a goofy dopey charm, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
+  2:'two moderately-sized round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, slightly mismatched in size, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
+  3:'three moderately-sized round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, one extra eye positioned above the other two, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
+  8:'eight small round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, clustered on the face like a spider, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)'
 };
 const EN_HORNS = {
   0:'a smooth rounded head with no horns', 1:'one small rounded clay horn on top of the head',
@@ -1146,7 +1146,7 @@ const EN_MOOD = {
 };
 const EN_EXPRESSION = {
   gentle:'a soft droopy-eyed, gentle and affectionate facial expression',
-  aggressive:'only the eyes look angry — sharply narrowed, upturned angry eyes — while the rest of the face (eyebrows, mouth) stays soft, neutral and cute, no furrowed brow ridges, no bared fangs, no deep scary frown',
+  aggressive:'only the eyes look angry — sharply narrowed, upturned angry eyes — while the eyebrows stay soft and neutral, no furrowed brow ridges',
   foodie:'an eager, expectant facial expression as if drooling in anticipation, mouth slightly open',
   sensitive:'a facial expression that looks like it could burst into tears at any moment, glassy watery eyes'
 };
@@ -1207,6 +1207,11 @@ function buildResultSheet(state,name){
   const gentleFeatureEN = personality==='gentle' ? (legs===0 ? EN_GENTLE_FEATURE.noLegs : EN_GENTLE_FEATURE.withLegs) : null;
   const personalityFeatureKR = personality==='gentle' ? gentleFeatureKR : PERSONALITY_FEATURE_KR[personality];
   const personalityFeatureEN = personality==='gentle' ? gentleFeatureEN : EN_PERSONALITY_FEATURE[personality];
+  const legsTailAddOn = (legs===0 && habitat!=='forest') ? ', with a simple small tail sticking out from the back instead of legs' : '';
+  const materialNegative = covering==='shortfur'
+    ? 'no plastic craft googly eyes'
+    : 'not felt, not fabric, not fleece, no fuzzy textile texture, no plastic craft googly eyes';
+  const legsFinalNegative = legs===0 ? 'absolutely no feet, no legs, and no toes visible anywhere on the body, ' : '';
   const visualKeywords = [
     `눈 ${eyes}개 — ${EYES_SHORT_KR[eyes]} 시선`,
     `${state.covering.reveal} 질감의 표피`,
@@ -1221,8 +1226,8 @@ function buildResultSheet(state,name){
   ];
 
   const imagePrompt =
-    `An original claymation character named "${name}", an extremely cute adorable kawaii stop-motion claymation creature with a soft doll-like charm, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
-    `${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
+    `An original claymation character named "${name}", an extremely cute adorable kawaii stop-motion claymation creature with a soft doll-like charm, silly and goofy and a little dopey-looking in the most endearing way, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
+    `${EN_LEGS[legs]}${legsTailAddOn}, ${EN_COVERING[covering]}, `+
     `visible soft hand-sculpted clay texture with subtle fingerprint marks here and there for tactile handmade charm, rounded smooth forms, matte-to-satin clay finish, `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
     `${EN_EXPRESSION[personality]}, `+
@@ -1233,9 +1238,10 @@ function buildResultSheet(state,name){
     `${personalityFeatureEN ? personalityFeatureEN+', ' : ''}`+
     `${EN_MOOD[personality]} mood, cute and charming claymation art direction, like a character from a clay stop-motion animated film, `+
     `body facing directly forward toward the camera in a straight-on symmetrical front view, not turned or angled to the side, `+
-    `single ${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), only a very faint minimal shadow directly beneath the creature, no strong or dark shadows, no props, no scenery, `+
+    `${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), only a very faint minimal shadow directly beneath the creature, no strong or dark shadows, no props, no scenery, `+
     `bright soft even studio lighting with no harsh shadows, `+
-    `not felt, not fabric, not fleece, no fuzzy textile texture, no plastic craft googly eyes, `+
+    `${legsFinalNegative}`+
+    `${materialNegative}, `+
     `no text, no logo, no watermark.`;
 
   const buttonLabel = '📋 결과지 프롬프트 복사';
