@@ -1101,11 +1101,11 @@ const HABITAT_FEATURE_KR = {
   forest:'길고 복슬복슬한 꼬리', sky:'등에 작은 양 날개'
 };
 const EN_HABITAT_FEATURE = {
-  sea:'a pair of tiny gills on the sides of the neck',
+  sea:'a pair of tiny gills on the sides of the neck, and no nose at all — a smooth flat face with no nose',
   land:'a small cute button nose',
-  cave:'a pair of small rounded ears on either side of the head',
-  forest:'a long fluffy bushy tail',
-  sky:'a small pair of wings on the back'
+  cave:'a pair of small rounded ears on either side of the head, and no nose at all — a smooth flat face with no nose',
+  forest:'a long fluffy bushy tail, and no nose at all — a smooth flat face with no nose',
+  sky:'a small pair of wings on the back, and no nose at all — a smooth flat face with no nose'
 };
 const PERSONALITY_FEATURE_KR = {
   aggressive:'부정교합 (턱이 튀어나오고 이빨이 삐뚤빼뚤함)', sensitive:'삐죽 튀어나온 송곳니'
@@ -1117,7 +1117,7 @@ const EN_PERSONALITY_FEATURE = {
 const GENTLE_FEATURE_KR = {withLegs:'손바닥에 도톰한 육구', noLegs:'길게 늘어진 혓바닥'};
 const EN_GENTLE_FEATURE = {withLegs:'soft paw pads on the palms', noLegs:'a long dangling tongue sticking out'};
 const EN_LEGS = {
-  0:'no visible legs, the body resting directly on the ground like a soft blob',
+  0:'absolutely no legs, no feet, and no arms of any kind — the body is a rounded legless blob resting directly on the ground, with a small cute tail sticking out from the back instead of legs',
   2:'two short stubby clay legs', 4:'four small rounded clay legs',
   6:'six thin spindly clay legs like an insect'
 };
@@ -1146,7 +1146,7 @@ const EN_MOOD = {
 };
 const EN_EXPRESSION = {
   gentle:'a soft droopy-eyed, gentle and affectionate facial expression',
-  aggressive:'a fierce facial expression with sharply upturned angry eyebrows',
+  aggressive:'a cutely grumpy facial expression with sharply upturned angry eyebrows (cute and endearing, not genuinely scary or menacing)',
   foodie:'an eager, expectant facial expression as if drooling in anticipation, mouth slightly open',
   sensitive:'a facial expression that looks like it could burst into tears at any moment, glassy watery eyes'
 };
@@ -1221,7 +1221,7 @@ function buildResultSheet(state,name){
   ];
 
   const imagePrompt =
-    `An original claymation character named "${name}", a cute adorable stop-motion claymation creature, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
+    `An original claymation character named "${name}", an extremely cute adorable kawaii stop-motion claymation creature with a soft doll-like charm, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
     `${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
     `visible soft hand-sculpted clay texture with subtle fingerprint marks here and there for tactile handmade charm, rounded smooth forms, matte-to-satin clay finish, `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
