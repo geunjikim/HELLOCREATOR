@@ -1054,13 +1054,13 @@ const COVERING_NOUN_KR = {longfur:'장모', scales:'인편', shortfur:'단모', 
 const POETIC_HABITAT_SHORT = {sea:'깊은 바다', land:'땅 밑', cave:'어두운 동굴', forest:'우거진 숲', sky:'높은 하늘'};
 const PERSONALITY_ONE_WORD = {gentle:'다정한', aggressive:'까칠한', foodie:'먹보', sensitive:'예민한'};
 const POSE_KR = {
-  gentle:'한 손을 살짝 들어 수줍게 손 흔들며 인사하는 자세',
+  gentle:'환하게 웃으며 한쪽 눈을 찡긋 윙크하는 자세',
   aggressive:'가슴을 내밀고 눈꼬리를 치켜올린 포악한 자세',
   foodie:'무언가를 우물우물 씹으며 배가 불뚝 나온 자세',
   sensitive:'몸을 웅크려 숨기려 하며 경계하는 자세',
 };
 const EN_POSE = {
-  gentle:'a shy, friendly pose with one hand raised in a small wave hello',
+  gentle:'a big warm smile with one eye winking playfully',
   aggressive:'a fierce, feisty stance with the chest puffed out and eyes narrowed aggressively',
   foodie:'munching on something with cheeks full and a round protruding belly',
   sensitive:'a wary, defensive pose, body scrunched down as if trying to hide',
@@ -1098,23 +1098,24 @@ const FRAME_KR = {
 };
 const HABITAT_FEATURE_KR = {
   sea:'목 옆에 작은 아가미', land:'귀엽고 작은 코', cave:'머리 양쪽에 작은 귀',
-  forest:'아주 커다란 발', sky:'등에 작은 양 날개'
+  forest:'길고 복슬복슬한 꼬리', sky:'등에 작은 양 날개'
 };
 const EN_HABITAT_FEATURE = {
   sea:'a pair of tiny gills on the sides of the neck',
   land:'a small cute button nose',
   cave:'a pair of small rounded ears on either side of the head',
-  forest:'very large oversized feet',
+  forest:'a long fluffy bushy tail',
   sky:'a small pair of wings on the back'
 };
 const PERSONALITY_FEATURE_KR = {
-  gentle:'손바닥에 도톰한 육구', aggressive:'길게 자란 발톱', sensitive:'삐죽 튀어나온 송곳니'
+  aggressive:'부정교합 (턱이 튀어나오고 이빨이 삐뚤빼뚤함)', sensitive:'삐죽 튀어나온 송곳니'
 };
 const EN_PERSONALITY_FEATURE = {
-  gentle:'soft paw pads on the palms',
-  aggressive:'long sharp claws',
+  aggressive:'a malocclusion with an underbite-like protruding jaw and crooked misaligned teeth',
   sensitive:'a jutting protruding fang poking out from the mouth'
 };
+const GENTLE_FEATURE_KR = {withLegs:'손바닥에 도톰한 육구', noLegs:'길게 늘어진 혓바닥'};
+const EN_GENTLE_FEATURE = {withLegs:'soft paw pads on the palms', noLegs:'a long dangling tongue sticking out'};
 const EN_LEGS = {
   0:'no visible legs, the body resting directly on the ground like a soft blob',
   2:'two short stubby clay legs', 4:'four small rounded clay legs',
@@ -1202,6 +1203,10 @@ function buildResultSheet(state,name){
     `${POETIC_PERSONALITY[personality]} ${TENDENCY_POETIC[tendency]}`;
 
   const scheme = computeColorScheme(state);
+  const gentleFeatureKR = personality==='gentle' ? (legs===0 ? GENTLE_FEATURE_KR.noLegs : GENTLE_FEATURE_KR.withLegs) : null;
+  const gentleFeatureEN = personality==='gentle' ? (legs===0 ? EN_GENTLE_FEATURE.noLegs : EN_GENTLE_FEATURE.withLegs) : null;
+  const personalityFeatureKR = personality==='gentle' ? gentleFeatureKR : PERSONALITY_FEATURE_KR[personality];
+  const personalityFeatureEN = personality==='gentle' ? gentleFeatureEN : EN_PERSONALITY_FEATURE[personality];
   const visualKeywords = [
     `눈 ${eyes}개 — ${EYES_SHORT_KR[eyes]} 시선`,
     `${state.covering.reveal} 질감의 표피`,
@@ -1211,7 +1216,7 @@ function buildResultSheet(state,name){
     `${state.size.reveal}`,
     `${state.horns.reveal}`,
     `표정: ${PERSONALITY_EXPR_KR[personality]}`,
-    ...(PERSONALITY_FEATURE_KR[personality] ? [`기질 특징: ${PERSONALITY_FEATURE_KR[personality]}`] : []),
+    ...(personalityFeatureKR ? [`기질 특징: ${personalityFeatureKR}`] : []),
     `무늬: ${PATTERN_KR[tendency]}`,
   ];
 
@@ -1225,7 +1230,7 @@ function buildResultSheet(state,name){
     `a two-tone body color scheme dominated by bright vivid ${scheme.habitatName} (about 60% of the body) with bright vivid ${scheme.secondaryName} as a secondary tone (about 30%), light-to-medium color values, not pastel, not desaturated, not washed out, but also not dark or deep or dim shades, `+
     `${EN_PATTERN[tendency]}, `+
     `${EN_POSE[personality]}, `+
-    `${EN_PERSONALITY_FEATURE[personality] ? EN_PERSONALITY_FEATURE[personality]+', ' : ''}`+
+    `${personalityFeatureEN ? personalityFeatureEN+', ' : ''}`+
     `${EN_MOOD[personality]} mood, cute and charming claymation art direction, like a character from a clay stop-motion animated film, `+
     `body facing directly forward toward the camera in a straight-on symmetrical front view, not turned or angled to the side, `+
     `single ${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), only a very faint minimal shadow directly beneath the creature, no strong or dark shadows, no props, no scenery, `+
