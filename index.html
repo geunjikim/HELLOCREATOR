@@ -1122,7 +1122,7 @@ const EN_LEGS = {
 };
 const EN_COVERING = {
   longfur:'covered in long uneven tufts of clay fur', scales:'textured with small overlapping clay scale patterns',
-  shortfur:'covered in a short bumpy fuzzy clay texture', feathers:'covered in soft rounded clay feather shapes'
+  shortfur:'covered in a short, fine, fuzzy plush-like clay texture resembling short fur (a soft fuzzy nap texture, not dots, not bumps, not raised studs)', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
   1:'a single large round eye sculpted directly into the clay, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
@@ -1142,6 +1142,12 @@ const EN_COLORS_PERSONALITY = {gentle:'soft pastel', aggressive:'bold saturated'
 const EN_MOOD = {
   gentle:'tender and quietly melancholic', aggressive:'feisty and grumpy but endearing',
   foodie:'eager, food-obsessed, and comically hungry', sensitive:'shy, timid, and easily startled'
+};
+const EN_EXPRESSION = {
+  gentle:'a soft droopy-eyed, gentle and affectionate facial expression',
+  aggressive:'a fierce facial expression with sharply upturned angry eyebrows',
+  foodie:'an eager, expectant facial expression as if drooling in anticipation, mouth slightly open',
+  sensitive:'a facial expression that looks like it could burst into tears at any moment, glassy watery eyes'
 };
 
 /* =========================================================
@@ -1212,8 +1218,9 @@ function buildResultSheet(state,name){
   const imagePrompt =
     `An original claymation character named "${name}", a cute adorable stop-motion claymation creature, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
     `${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
-    `visible soft hand-sculpted clay texture with gentle fingerprint and tool-mark dimples typical of claymation character design, rounded smooth forms, matte-to-satin clay finish, `+
+    `visible soft hand-sculpted clay texture with subtle fingerprint marks here and there for tactile handmade charm, rounded smooth forms, matte-to-satin clay finish, `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
+    `${EN_EXPRESSION[personality]}, `+
     `${EN_HABITAT_FEATURE[habitat]}, `+
     `a two-tone body color scheme dominated by bright vivid ${scheme.habitatName} (about 60% of the body) with bright vivid ${scheme.secondaryName} as a secondary tone (about 30%), light-to-medium color values, not pastel, not desaturated, not washed out, but also not dark or deep or dim shades, `+
     `${EN_PATTERN[tendency]}, `+
