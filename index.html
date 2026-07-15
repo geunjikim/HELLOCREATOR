@@ -573,7 +573,6 @@ const CATEGORIES = [
     {id:'sky', label:'뭉게구름', emoji:'☁️', hint:'자꾸 위로 떠오른다', reveal:'하늘', color:'#a8d4ec', value:'sky'},
   ]},
   { key:'legs', title:'이동의 재료', shelfName:'이동의 약', short:'이동', glassColor:'#b98fae', shape:'', prompt:'이 아이는 어떻게 움직일까요?', options:[
-    {id:'leg0', label:'망고 젤리', emoji:'🥭', hint:'만지면 흐물흐물할 것 같다', reveal:'다리 없음', color:'#f0a030', value:0},
     {id:'leg2', label:'헌 신발끈', emoji:'👟', hint:'자꾸 어딘가로 가고 싶어 하는 걸까?', reveal:'다리 2개', color:'#8a7050', value:2},
     {id:'leg4', label:'의자 나사', emoji:'🪑', hint:'네 방향을 단단히 기억하고 있는 듯하다', reveal:'다리 4개', color:'#8a8a8a', value:4},
     {id:'leg6', label:'가는 철사', emoji:'🧷', hint:'필요 이상으로 바르작거린다', reveal:'다리 6개', color:'#7a95ac', value:6},
@@ -1054,19 +1053,19 @@ const COVERING_NOUN_KR = {longfur:'장모', scales:'인편', shortfur:'단모', 
 const POETIC_HABITAT_SHORT = {sea:'깊은 바다', land:'땅 밑', cave:'어두운 동굴', forest:'우거진 숲', sky:'높은 하늘'};
 const PERSONALITY_ONE_WORD = {gentle:'다정한', aggressive:'까칠한', foodie:'먹보', sensitive:'예민한'};
 const POSE_KR = {
-  gentle:'환하게 웃으며 한쪽 눈을 찡긋 윙크하는 자세',
+  gentle:'환하게 웃고 있는 자세',
   aggressive:'가슴을 내밀고 눈꼬리를 치켜올린 포악한 자세',
   foodie:'무언가를 우물우물 씹으며 배가 불뚝 나온 자세',
   sensitive:'몸을 웅크려 숨기려 하며 경계하는 자세',
 };
 const EN_POSE = {
-  gentle:'a big warm smile with one eye winking playfully',
+  gentle:'a big warm smile',
   aggressive:'a fierce, feisty stance with the chest puffed out and eyes narrowed aggressively',
   foodie:'munching on something with cheeks full and a round protruding belly',
   sensitive:'a wary, defensive pose, body scrunched down as if trying to hide',
 };
 const LEGS_POETIC = {
-  0:'다리 없이도 어디든 흘러갈 수 있고,', 2:'두 다리로 뒤뚱뒤뚱 걸어 다니며,',
+  2:'두 다리로 뒤뚱뒤뚱 걸어 다니며,',
   4:'네 다리로 땅을 단단히 딛고 서며,', 6:'여섯 개의 가는 다리로 부지런히 움직이며,'
 };
 const HORNS_POETIC = {
@@ -1080,7 +1079,7 @@ const TENDENCY_POETIC = {
   decisive:'망설임은 이 아이에게 어울리지 않습니다. 정해진 길을 흔들림 없이 나아갑니다.'
 };
 const EYES_SHORT_KR = {1:'하나로 응시하는', 2:'나란히 마주보는', 3:'삼각형으로 배치된', 8:'거미처럼 촘촘히 모인'};
-const LEGS_SHORT_KR = {0:'둥둥 떠 있는 듯한 자세', 2:'뒤뚱거리는 두 다리', 4:'안정적인 네 다리', 6:'분주한 여섯 다리'};
+const LEGS_SHORT_KR = {2:'뒤뚱거리는 두 다리', 4:'안정적인 네 다리', 6:'분주한 여섯 다리'};
 const PERSONALITY_EXPR_KR = {
   gentle:'슬쩍 처진 다정한 눈매', aggressive:'치켜올라간 사나운 눈매',
   foodie:'침 흘릴 듯 기대에 찬 표정', sensitive:'금방이라도 울 것 같은 눈매'
@@ -1114,10 +1113,9 @@ const EN_PERSONALITY_FEATURE = {
   aggressive:'a malocclusion with an underbite-like protruding jaw and crooked misaligned teeth',
   sensitive:'a jutting protruding fang poking out from the mouth'
 };
-const GENTLE_FEATURE_KR = {withLegs:'손바닥에 도톰한 육구', noLegs:'길게 늘어진 혓바닥'};
-const EN_GENTLE_FEATURE = {withLegs:'soft paw pads on the palms', noLegs:'a long dangling tongue sticking out'};
+const GENTLE_FEATURE_KR = '손바닥에 도톰한 육구';
+const EN_GENTLE_FEATURE = 'soft paw pads on the palms';
 const EN_LEGS = {
-  0:'no legs, no feet, and no arms of any kind — instead, the bottom of the body is one single smooth continuous curve that touches the ground directly, like a rounded pear, egg, or teardrop shape sitting flat on the surface, with no separate feet, no toes, no stubby limbs, no protrusions of any kind at the base',
   2:'two short stubby clay legs', 4:'four small rounded clay legs',
   6:'six thin spindly clay legs like an insect'
 };
@@ -1126,7 +1124,7 @@ const EN_COVERING = {
   shortfur:'covered in a short, dense, uniform clay texture that looks like felted wool in appearance and pattern, but is clearly still solid clay (not real felt, not real fabric, not soft textile) with visible fingerprint and hand-press marks, not dots, not bumps, not raised studs', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
-  1:'exactly ONE single eye total on the entire face — absolutely no second eye anywhere, no matter how small; the face is otherwise smooth and blank with only this one eye — a moderately-sized round eye (not oversized, taking up only a modest portion of the face) sculpted directly into the clay, with a goofy dopey charm, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
+  1:'exactly ONE single eye total on the entire face — absolutely no second eye anywhere, no matter how small; the face is otherwise smooth and blank with only this one eye, positioned dead-center in the middle of the face (horizontally centered, not off to one side) — a moderately-sized round eye (not oversized, taking up only a modest portion of the face) sculpted directly into the clay, with a goofy dopey charm, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
   2:'two moderately-sized round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, slightly mismatched in size, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
   3:'three moderately-sized round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, one extra eye positioned above the other two, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
   8:'eight small round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, clustered on the face like a spider, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)'
@@ -1203,13 +1201,9 @@ function buildResultSheet(state,name){
     `${POETIC_PERSONALITY[personality]} ${TENDENCY_POETIC[tendency]}`;
 
   const scheme = computeColorScheme(state);
-  const gentleFeatureKR = personality==='gentle' ? (legs===0 ? GENTLE_FEATURE_KR.noLegs : GENTLE_FEATURE_KR.withLegs) : null;
-  const gentleFeatureEN = personality==='gentle' ? (legs===0 ? EN_GENTLE_FEATURE.noLegs : EN_GENTLE_FEATURE.withLegs) : null;
-  const personalityFeatureKR = personality==='gentle' ? gentleFeatureKR : PERSONALITY_FEATURE_KR[personality];
-  const personalityFeatureEN = personality==='gentle' ? gentleFeatureEN : EN_PERSONALITY_FEATURE[personality];
-  const legsTailAddOn = (legs===0 && habitat!=='forest') ? ', with a simple small tail sticking out from the back instead of legs' : '';
+  const personalityFeatureKR = personality==='gentle' ? GENTLE_FEATURE_KR : PERSONALITY_FEATURE_KR[personality];
+  const personalityFeatureEN = personality==='gentle' ? EN_GENTLE_FEATURE : EN_PERSONALITY_FEATURE[personality];
   const materialNegative = 'not real felt, not real fabric, not real fleece, no soft textile material, unmistakably solid clay throughout, no plastic craft googly eyes';
-  const legsFinalNegative = legs===0 ? 'absolutely no feet, no legs, and no toes visible anywhere on the body, ' : '';
   const visualKeywords = [
     `눈 ${eyes}개 — ${EYES_SHORT_KR[eyes]} 시선`,
     `${state.covering.reveal} 질감의 표피`,
@@ -1225,7 +1219,8 @@ function buildResultSheet(state,name){
 
   const imagePrompt =
     `An original claymation character named "${name}", an extremely cute adorable kawaii stop-motion claymation creature with a soft doll-like charm, silly and goofy and a little dopey-looking in the most endearing way, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
-    `${EN_LEGS[legs]}${legsTailAddOn}, ${EN_COVERING[covering]}, `+
+    `in the style of classic 1980s-1990s European claymation children's TV shows — simple chunky rounded plasticine monster character design, thick blobby limbs and body, unmistakably hand-molded with visible fingerprints, simple friendly faces, `+
+    `${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
     `made of unmistakably solid sculpted clay (plasticine/polymer clay), with clearly visible fingerprint indentations and hand-molding marks all over the surface, matte clay finish (not glossy, not satin), `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
     `${EN_EXPRESSION[personality]}, `+
@@ -1242,7 +1237,6 @@ function buildResultSheet(state,name){
     `this diffused light-tent setup means the clay surface itself shows flat, even, uniform color with no visible shading gradient, no ambient occlusion, no darkened crevices, no highlight hot spots — every part of the body reads as the same flat saturated color value regardless of its 3D form; `+
     `the paint/dye pigment on the clay itself is extremely saturated, vivid, and rich — like fresh poster paint or vector-illustration flat color straight out of the tube — this is a property of the material's pigment, not just the lighting; `+
     `only a barely-visible, almost imperceptible contact shadow directly under the creature (not a gradient, just a tiny soft dark patch right at the base), `+
-    `${legsFinalNegative}`+
     `${materialNegative}, `+
     `no text, no logo, no watermark.`;
 
