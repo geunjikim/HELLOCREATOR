@@ -1126,7 +1126,7 @@ const EN_COVERING = {
   shortfur:'covered in a short, dense, uniform clay texture that looks like felted wool in appearance and pattern, but is clearly still solid clay (not real felt, not real fabric, not soft textile) with visible fingerprint and hand-press marks, not dots, not bumps, not raised studs', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
-  1:'a single moderately-sized round eye (not oversized, taking up only a modest portion of the face) sculpted directly into the clay, with a goofy dopey charm, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
+  1:'exactly ONE single eye total on the entire face — absolutely no second eye anywhere, no matter how small; the face is otherwise smooth and blank with only this one eye — a moderately-sized round eye (not oversized, taking up only a modest portion of the face) sculpted directly into the clay, with a goofy dopey charm, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
   2:'two moderately-sized round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, slightly mismatched in size, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
   3:'three moderately-sized round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, one extra eye positioned above the other two, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
   8:'eight small round eyes (not oversized, each taking up only a modest portion of the face) sculpted directly into the clay, each looking a slightly different direction for a goofy, silly, dopey charm, clustered on the face like a spider, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)'
@@ -1145,10 +1145,10 @@ const EN_MOOD = {
   foodie:'eager, food-obsessed, and comically hungry', sensitive:'shy, timid, and easily startled'
 };
 const EN_EXPRESSION = {
-  gentle:'a soft droopy-eyed, gentle and affectionate facial expression',
-  aggressive:'only the eyes look angry — sharply narrowed, upturned angry eyes — while the eyebrows stay soft and neutral, no furrowed brow ridges',
+  gentle:'a soft, gentle and affectionate facial expression with a slight tender droop to the gaze (do not add extra eyes — this only affects the existing eye or eyes already described, however many there are)',
+  aggressive:'an angry, sharply narrowed and upturned angry gaze — while the eyebrows stay soft and neutral, no furrowed brow ridges (do not add extra eyes — this only affects the existing eye or eyes already described, however many there are)',
   foodie:'an eager, expectant facial expression as if drooling in anticipation, mouth slightly open',
-  sensitive:'a facial expression that looks like it could burst into tears at any moment, glassy watery eyes'
+  sensitive:'a facial expression that looks like it could burst into tears at any moment, with a glassy watery look to the gaze (do not add extra eyes — this only affects the existing eye or eyes already described, however many there are)'
 };
 
 /* =========================================================
@@ -1240,6 +1240,7 @@ function buildResultSheet(state,name){
     `bright, flat, even, shadowless studio lighting evenly illuminating the entire body from the front — the body surface itself shows almost no shading, no gradient shadow, no dark occlusion, no dimming on any part of the clay; colors stay uniformly bright, saturated, and clean across the whole body with minimal tonal variation from light-to-shadow, `+
     `${legsFinalNegative}`+
     `${materialNegative}, `+
+    `maximally vibrant, punchy, highly saturated colors like a flat-lit toy product photo, near-zero shading or gradient darkening on the clay surface, no ambient occlusion, no dramatic 3D-render lighting falloff, `+
     `no text, no logo, no watermark.`;
 
   const buttonLabel = '📋 결과지 프롬프트 복사';
