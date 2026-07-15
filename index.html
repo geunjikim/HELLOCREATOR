@@ -1086,12 +1086,6 @@ const PERSONALITY_EXPR_KR = {
   foodie:'침 흘릴 듯 기대에 찬 표정', sensitive:'금방이라도 울 것 같은 눈매'
 };
 
-const EN_BODY_SIZE = {
-  mouse:'a small round pudgy body about the size of a mouse',
-  dog:'a plump medium-sized rounded body about the size of a small dog',
-  horse:'a large soft doughy body about the size of a small horse',
-  elephant:'an oversized bulky round body about the size of a baby elephant'
-};
 const EN_FRAME_SIZE = {
   mouse:'the creature small and centered in the frame, with generous empty white space surrounding it on all sides, emphasizing how tiny it is',
   dog:'the creature centered in frame, taking up roughly half of the frame',
@@ -1131,10 +1125,10 @@ const EN_COVERING = {
   shortfur:'covered in a short bumpy fuzzy clay texture', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
-  1:'a single large round eye sculpted directly into the clay, with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
-  2:'two large round eyes sculpted directly into the clay, slightly mismatched in size, each with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
-  3:'three round eyes sculpted directly into the clay, one extra eye positioned above the other two, each with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
-  8:'eight small round eyes sculpted directly into the clay, clustered on the face like a spider, each with a plain solid black pupil (no sparkle, no bright catchlight, not twinkly) and a simple flat matte white sclera (not plastic craft eyes, not googly eyes)'
+  1:'a single large round eye sculpted directly into the clay, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
+  2:'two large round eyes sculpted directly into the clay, each possibly looking a slightly different direction for a charming quirky look, slightly mismatched in size, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
+  3:'three round eyes sculpted directly into the clay, each possibly looking a slightly different direction for a charming quirky look, one extra eye positioned above the other two, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)',
+  8:'eight small round eyes sculpted directly into the clay, each possibly looking a slightly different direction for a charming quirky look, clustered on the face like a spider, each with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not plastic craft eyes, not googly eyes)'
 };
 const EN_HORNS = {
   0:'a smooth rounded head with no horns', 1:'one small rounded clay horn on top of the head',
@@ -1217,18 +1211,18 @@ function buildResultSheet(state,name){
 
   const imagePrompt =
     `An original claymation character named "${name}", a cute adorable stop-motion claymation creature, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
-    `${EN_BODY_SIZE[size]}, ${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
+    `${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
     `visible soft hand-sculpted clay texture with gentle fingerprint and tool-mark dimples typical of claymation character design, rounded smooth forms, matte-to-satin clay finish, `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
-    `small round blush-colored accent dots on the cheeks for extra cuteness, `+
     `${EN_HABITAT_FEATURE[habitat]}, `+
-    `a two-tone body color scheme dominated by highly saturated vivid ${scheme.habitatName} (about 60% of the body) with saturated vivid ${scheme.secondaryName} as a secondary tone (about 30%), bold rich candy-like colors, not pastel, not desaturated, not washed out, `+
+    `a two-tone body color scheme dominated by bright vivid ${scheme.habitatName} (about 60% of the body) with bright vivid ${scheme.secondaryName} as a secondary tone (about 30%), light-to-medium color values, not pastel, not desaturated, not washed out, but also not dark or deep or dim shades, `+
     `${EN_PATTERN[tendency]}, `+
     `${EN_POSE[personality]}, `+
     `${EN_PERSONALITY_FEATURE[personality] ? EN_PERSONALITY_FEATURE[personality]+', ' : ''}`+
     `${EN_MOOD[personality]} mood, cute and charming claymation art direction, like a character from a clay stop-motion animated film, `+
-    `single ${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), a soft subtle contact shadow directly beneath the creature, no props, no scenery, `+
-    `soft even studio lighting with no harsh shadows, `+
+    `body facing directly forward toward the camera in a straight-on symmetrical front view, not turned or angled to the side, `+
+    `single ${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), only a very faint minimal shadow directly beneath the creature, no strong or dark shadows, no props, no scenery, `+
+    `bright soft even studio lighting with no harsh shadows, `+
     `not felt, not fabric, not fleece, no fuzzy textile texture, no plastic craft googly eyes, `+
     `no text, no logo, no watermark.`;
 
