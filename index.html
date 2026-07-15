@@ -1117,13 +1117,13 @@ const EN_PERSONALITY_FEATURE = {
 const GENTLE_FEATURE_KR = {withLegs:'손바닥에 도톰한 육구', noLegs:'길게 늘어진 혓바닥'};
 const EN_GENTLE_FEATURE = {withLegs:'soft paw pads on the palms', noLegs:'a long dangling tongue sticking out'};
 const EN_LEGS = {
-  0:'absolutely no legs, no feet, and no arms of any kind — the body is a rounded legless blob resting directly on the ground',
+  0:'no legs, no feet, and no arms of any kind — instead, the bottom of the body is one single smooth continuous curve that touches the ground directly, like a rounded pear, egg, or teardrop shape sitting flat on the surface, with no separate feet, no toes, no stubby limbs, no protrusions of any kind at the base',
   2:'two short stubby clay legs', 4:'four small rounded clay legs',
   6:'six thin spindly clay legs like an insect'
 };
 const EN_COVERING = {
-  longfur:'covered in long fur that looks like thick knitted yarn or wool strands, long uneven tufts', scales:'textured with small overlapping clay scale patterns',
-  shortfur:'covered in a short, dense felt-like fabric texture (soft felted wool fabric texture), not dots, not bumps, not raised studs', feathers:'covered in soft rounded clay feather shapes'
+  longfur:'covered in long thin clay coils and strands draped over the body — like thin ropes of clay extruded and hand-pressed on, clearly still solid clay (not real yarn, not real wool, not real fiber, not soft fabric) with visible fingerprint and hand-press marks along each strand', scales:'textured with small overlapping clay scale patterns',
+  shortfur:'covered in a short, dense, uniform clay texture that looks like felted wool in appearance and pattern, but is clearly still solid clay (not real felt, not real fabric, not soft textile) with visible fingerprint and hand-press marks, not dots, not bumps, not raised studs', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
   1:'a single moderately-sized round eye (not oversized, taking up only a modest portion of the face) sculpted directly into the clay, with a goofy dopey charm, with a small plain solid black pupil taking up only about 10-20% of the eye (small pupil, mostly white) and no sparkle, no bright catchlight, not twinkly, simple flat matte white sclera (not a plastic craft eye, not a googly eye)',
@@ -1208,9 +1208,7 @@ function buildResultSheet(state,name){
   const personalityFeatureKR = personality==='gentle' ? gentleFeatureKR : PERSONALITY_FEATURE_KR[personality];
   const personalityFeatureEN = personality==='gentle' ? gentleFeatureEN : EN_PERSONALITY_FEATURE[personality];
   const legsTailAddOn = (legs===0 && habitat!=='forest') ? ', with a simple small tail sticking out from the back instead of legs' : '';
-  const materialNegative = covering==='shortfur'
-    ? 'no plastic craft googly eyes'
-    : 'not felt, not fabric, not fleece, no fuzzy textile texture, no plastic craft googly eyes';
+  const materialNegative = 'not real felt, not real fabric, not real fleece, no soft textile material, unmistakably solid clay throughout, no plastic craft googly eyes';
   const legsFinalNegative = legs===0 ? 'absolutely no feet, no legs, and no toes visible anywhere on the body, ' : '';
   const visualKeywords = [
     `눈 ${eyes}개 — ${EYES_SHORT_KR[eyes]} 시선`,
@@ -1228,7 +1226,7 @@ function buildResultSheet(state,name){
   const imagePrompt =
     `An original claymation character named "${name}", an extremely cute adorable kawaii stop-motion claymation creature with a soft doll-like charm, silly and goofy and a little dopey-looking in the most endearing way, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
     `${EN_LEGS[legs]}${legsTailAddOn}, ${EN_COVERING[covering]}, `+
-    `visible soft hand-sculpted clay texture with subtle fingerprint marks here and there for tactile handmade charm, rounded smooth forms, matte-to-satin clay finish, `+
+    `made of unmistakably solid sculpted clay (plasticine/polymer clay), with clearly visible fingerprint indentations and hand-molding marks all over the surface, matte clay finish (not glossy, not satin), `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
     `${EN_EXPRESSION[personality]}, `+
     `${EN_HABITAT_FEATURE[habitat]}, `+
@@ -1238,8 +1236,8 @@ function buildResultSheet(state,name){
     `${personalityFeatureEN ? personalityFeatureEN+', ' : ''}`+
     `${EN_MOOD[personality]} mood, cute and charming claymation art direction, like a character from a clay stop-motion animated film, `+
     `body facing directly forward toward the camera in a straight-on symmetrical front view, not turned or angled to the side, `+
-    `${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), only a very faint minimal shadow directly beneath the creature, no strong or dark shadows, no props, no scenery, `+
-    `bright soft even studio lighting with no harsh shadows, `+
+    `${EN_FRAME_SIZE[size]}, the background is a completely flat, pure, uniform white (RGB 255,255,255) exactly like blank white paper — absolutely no cream, no ivory, no beige, no gray, no off-white tint anywhere in the background, only a very faint minimal shadow directly beneath the creature, no strong or dark shadows, no props, no scenery, `+
+    `bright, flat, even, shadowless studio lighting evenly illuminating the entire body from the front — the body surface itself shows almost no shading, no gradient shadow, no dark occlusion, no dimming on any part of the clay; colors stay uniformly bright, saturated, and clean across the whole body with minimal tonal variation from light-to-shadow, `+
     `${legsFinalNegative}`+
     `${materialNegative}, `+
     `no text, no logo, no watermark.`;
