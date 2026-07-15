@@ -1230,17 +1230,20 @@ function buildResultSheet(state,name){
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
     `${EN_EXPRESSION[personality]}, `+
     `${EN_HABITAT_FEATURE[habitat]}, `+
-    `a two-tone body color scheme dominated by bright vivid ${scheme.habitatName} (about 60% of the body) with bright vivid ${scheme.secondaryName} as a secondary tone (about 30%), light-to-medium color values, not pastel, not desaturated, not washed out, but also not dark or deep or dim shades, `+
+    `a two-tone body color scheme dominated by ${scheme.habitatName} (about 60% of the body) with ${scheme.secondaryName} as a secondary tone (about 30%), `+
     `${EN_PATTERN[tendency]}, `+
     `${EN_POSE[personality]}, `+
     `${personalityFeatureEN ? personalityFeatureEN+', ' : ''}`+
     `${EN_MOOD[personality]} mood, cute and charming claymation art direction, like a character from a clay stop-motion animated film, `+
     `body facing directly forward toward the camera in a straight-on symmetrical front view, not turned or angled to the side, `+
-    `${EN_FRAME_SIZE[size]}, the background is a completely flat, pure, uniform white (RGB 255,255,255) exactly like blank white paper — absolutely no cream, no ivory, no beige, no gray, no off-white tint anywhere in the background, only a very faint minimal shadow directly beneath the creature, no strong or dark shadows, no props, no scenery, `+
-    `bright, flat, even, shadowless studio lighting evenly illuminating the entire body from the front — the body surface itself shows almost no shading, no gradient shadow, no dark occlusion, no dimming on any part of the clay; colors stay uniformly bright, saturated, and clean across the whole body with minimal tonal variation from light-to-shadow, `+
+    `${EN_FRAME_SIZE[size]}, `+
+    `the background is a solid flat block of pure white color (hex #FFFFFF), like a flat white rectangle in a graphic design file — completely uniform white with absolutely ZERO gradient, ZERO vignette, ZERO soft fade, ZERO darkening toward the edges or corners; every single pixel of the background is the exact same pure white from edge to edge; this is NOT a photography studio backdrop, NOT a seamless paper backdrop, NOT a softbox-lit background — it is simply flat solid white like a blank digital canvas; `+
+    `the creature itself has fully diffused omnidirectional lighting coming equally from all sides at once, like Amazon e-commerce product photography — NOT a single directional key light, NOT studio spotlight photography, NOT dramatic 3D-render lighting; `+
+    `this diffused light-tent setup means the clay surface itself shows flat, even, uniform color with no visible shading gradient, no ambient occlusion, no darkened crevices, no highlight hot spots — every part of the body reads as the same flat saturated color value regardless of its 3D form; `+
+    `the paint/dye pigment on the clay itself is extremely saturated, vivid, and rich — like fresh poster paint or vector-illustration flat color straight out of the tube — this is a property of the material's pigment, not just the lighting; `+
+    `only a barely-visible, almost imperceptible contact shadow directly under the creature (not a gradient, just a tiny soft dark patch right at the base), `+
     `${legsFinalNegative}`+
     `${materialNegative}, `+
-    `maximally vibrant, punchy, highly saturated colors like a flat-lit toy product photo, near-zero shading or gradient darkening on the clay surface, no ambient occlusion, no dramatic 3D-render lighting falloff, `+
     `no text, no logo, no watermark.`;
 
   const buttonLabel = '📋 결과지 프롬프트 복사';
