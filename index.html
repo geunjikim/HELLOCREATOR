@@ -1131,8 +1131,10 @@ const EN_COVERING = {
   shortfur:'covered in a short bumpy fuzzy clay texture', feathers:'covered in soft rounded clay feather shapes'
 };
 const EN_EYES = {
-  1:'a single large round googly eye centered on the face', 2:'two big mismatched round googly eyes',
-  3:'three round googly eyes, one extra eye above the other two', 8:'eight small round googly eyes clustered on the face like a spider'
+  1:'a single large round eye sculpted directly into the clay, with a smooth glossy black pupil and a matte white sclera (not a plastic craft eye, not a googly eye)',
+  2:'two large round eyes sculpted directly into the clay, slightly mismatched in size, each with a smooth glossy black pupil and a matte white sclera (not plastic craft eyes, not googly eyes)',
+  3:'three round eyes sculpted directly into the clay, one extra eye positioned above the other two, each with a smooth glossy black pupil and a matte white sclera (not plastic craft eyes, not googly eyes)',
+  8:'eight small round eyes sculpted directly into the clay, clustered on the face like a spider, each with a smooth glossy black pupil and a matte white sclera (not plastic craft eyes, not googly eyes)'
 };
 const EN_HORNS = {
   0:'a smooth rounded head with no horns', 1:'one small rounded clay horn on top of the head',
@@ -1149,7 +1151,7 @@ const EN_MOOD = {
 };
 
 /* =========================================================
-   COLOR SCHEME: habitat 60% + most-repeated hue 30% (two-tone)
+   COLOR SCHEME: habitat 60% + a randomly chosen ingredient's hue 30% (two-tone)
 ========================================================= */
 function hexToHSL(hex){
   hex = hex.replace('#','');
@@ -1180,20 +1182,10 @@ function hexToColorName(hex){
   return 'warm red';
 }
 function computeColorScheme(state){
-  const colorsByCat = {};
-  CATEGORIES.forEach(cat=>{ colorsByCat[cat.key] = state[cat.key].color; });
-  const names = Object.values(colorsByCat).map(hexToColorName);
-  const counts = {};
-  names.forEach(n=>{ counts[n]=(counts[n]||0)+1; });
-  const habitatName = hexToColorName(colorsByCat.habitat);
-  let secondaryName = null, secondaryCount = 0;
-  Object.entries(counts).forEach(([n,c])=>{
-    if(n!==habitatName && c>secondaryCount){ secondaryCount=c; secondaryName=n; }
-  });
-  if(!secondaryName || secondaryCount<=1){
-    // no real repeats among the picks — fall back to the covering color as the secondary tone
-    secondaryName = hexToColorName(colorsByCat.covering);
-  }
+  const habitatName = hexToColorName(state.habitat.color);
+  const otherCats = CATEGORIES.filter(cat => cat.key !== 'habitat');
+  const pick = otherCats[Math.floor(Math.random() * otherCats.length)];
+  const secondaryName = hexToColorName(state[pick.key].color);
   return {habitatName, secondaryName};
 }
 
@@ -1224,18 +1216,19 @@ function buildResultSheet(state,name){
   ];
 
   const imagePrompt =
-    `An original creature character named "${name}", handmade clay and felt doll style, extremely simple stop-motion-style creature, `+
+    `An original creature character named "${name}", smooth matte clay sculpture, professional collectible vinyl toy design, polished 3D-rendered claymation character, `+
     `${EN_BODY_SIZE[size]}, ${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
-    `soft lumpy clay texture with visible fingerprints and hand-sculpted imperfections, `+
+    `smooth clean clay surface with subtle sculpted texture, no visible fingerprints, no rough or amateur imperfections, `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
     `${EN_HABITAT_FEATURE[habitat]}, `+
     `a two-tone body color scheme dominated by ${scheme.habitatName} (about 60% of the body) with ${scheme.secondaryName} as a secondary tone (about 30%), `+
     `${EN_PATTERN[tendency]}, `+
     `${EN_POSE[personality]}, `+
     `${EN_PERSONALITY_FEATURE[personality] ? EN_PERSONALITY_FEATURE[personality]+', ' : ''}`+
-    `${EN_MOOD[personality]} mood, minimalist handmade doll art direction, `+
-    `single ${EN_FRAME_SIZE[size]}, plain solid white background, no props, no scenery, `+
+    `${EN_MOOD[personality]} mood, clean professional toy-photography art direction, `+
+    `single ${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), no props, no scenery, `+
     `soft even studio lighting with no harsh shadows, `+
+    `not felt, not fabric, not fleece, no fuzzy textile texture, no plastic craft googly eyes, `+
     `no text, no logo, no watermark.`;
 
   const buttonLabel = '📋 결과지 프롬프트 복사';
@@ -1283,7 +1276,7 @@ async function summonImage(prompt){
   btn.disabled = true;
   imgWrap.style.display = 'none';
   imgWrap.innerHTML = '';
-  statusEl.innerHTML = '<span class="summon-spinner"></span>솥에서 형상을 불러오는 중... (10~30초 정도 걸려요)';
+  statusEl.innerHTML = '<span class="summon-spinner"></span>크리쳐를 소환하는 중... (10~30초 정도 걸려요)';
 
   try{
     const res = await fetch('/api/generate', {
@@ -1295,8 +1288,13 @@ async function summonImage(prompt){
     if(!res.ok){
       const errBody = await res.json().catch(()=>null);
       const msg = errBody?.error || `HTTP ${res.status}`;
-      statusEl.textContent = '소환에 실패했어요: ' + msg;
-      btn.disabled = false;
+      if(res.status === 429){
+        statusEl.textContent = msg;
+        btn.disabled = true; // no point letting them retry until tomorrow
+      } else {
+        statusEl.textContent = '소환에 실패했어요: ' + msg;
+        btn.disabled = false;
+      }
       return;
     }
 
@@ -1309,7 +1307,8 @@ async function summonImage(prompt){
       return;
     }
 
-    statusEl.textContent = '✨ 소환 완료!';
+    const remainingNote = (typeof data.remaining === 'number') ? ` (오늘 남은 무료 소환: ${data.remaining}회)` : '';
+    statusEl.textContent = '✨ 소환 완료!' + remainingNote;
     imgWrap.innerHTML = `
       <img src="${src}" alt="소환된 크리처">
       <div class="summon-img-actions">
