@@ -554,9 +554,9 @@ h1,h2,h3{font-family:var(--font-display); letter-spacing:0.5px; font-weight:norm
 ========================================================= */
 const CATEGORIES = [
   { key:'eyes', title:'시선의 재료', shelfName:'시선의 약', short:'시선', glassColor:'#8fc7e0', shape:'', prompt:'무엇을 넣으면 이 아이의 시선이 결정될까요?', options:[
-    {id:'eye1', label:'보름달', emoji:'🌕', hint:'외로워보이는 둥근 달이다', reveal:'눈 1개', color:'#e8c94a', value:1},
+    {id:'eye1', label:'보름달', emoji:'🌕', hint:'외로워 보이는 둥근 달이다', reveal:'눈 1개', color:'#e8c94a', value:1},
     {id:'eye2', label:'쌍안경', emoji:'👓', hint:'밤마다 누군가를 몰래 지켜볼 것 같다', reveal:'눈 2개', color:'#2c3a56', value:2},
-    {id:'eye3', label:'종이비행기', emoji:'📐', hint:'너무 뾰족해 보인다', reveal:'눈 3개', color:'#eee8d5', value:3},
+    {id:'eye3', label:'삼각자', emoji:'📐', hint:'너무 뾰족해 보인다', reveal:'눈 3개', color:'#eee8d5', value:3},
     {id:'eye8', label:'포도알', emoji:'🍇', hint:'한 송이에 여러 개가 매달려 있다', reveal:'눈 8개', color:'#6b3f8a', value:8},
   ]},
   { key:'covering', title:'표피의 재료', shelfName:'표피의 약', short:'표피', glassColor:'#c9a56b', shape:'', prompt:'무엇으로 이 아이를 감싸줄까요?', options:[
@@ -593,7 +593,7 @@ const CATEGORIES = [
     {id:'gentle', label:'따뜻한 우유', emoji:'🥛', hint:'조용히 식어가며 다 용서해 줄 것 같다', reveal:'다정함', color:'#f5ecd8', value:'gentle'},
     {id:'aggressive', label:'탄 고춧가루', emoji:'🌶️', hint:'매운데 쓰기까지 하다', reveal:'사나움', color:'#8a2a1a', value:'aggressive'},
     {id:'foodie', label:'막대사탕', emoji:'🍭', hint:'빨아도 빨아도 줄어들지 않는 듯하다', reveal:'먹보', color:'#e85a90', value:'foodie'},
-    {id:'sensitive', label:'깨진 유리컵', emoji:'🔔', hint:'건드리지 않아도 꺠질 것 같다', reveal:'예민함', color:'#b8d8e0', value:'sensitive'},
+    {id:'sensitive', label:'깨진 유리컵', emoji:'🔔', hint:'건드리지 않아도 깨질 것 같다', reveal:'예민함', color:'#b8d8e0', value:'sensitive'},
   ]},
   { key:'tendency', title:'창조주의 잔여물', shelfName:'창조주의 약', short:'창조주', glassColor:'#8a7050', shape:'shape-tall', prompt:'당신의 어떤 조각을 이 아이에게 남길까요?', options:[
     {id:'imaginative', label:'캐릭터 키링', emoji:'🔑', hint:'귀엽고 발랄한 인형 키링.', reveal:'몽상가', color:'#e0a0c0', value:'imaginative'},
@@ -1010,7 +1010,7 @@ const DIS_HABITAT = {
   cave:['밝은 조명', '탁 트인 넓은 공간'], forest:['매캐한 매연', '딱딱한 바닥'], sky:['좁은 상자', '땅에 오래 머무는 것']
 };
 const DIS_PERSONALITY = {
-  gentle:['큰소리', '다툼이 있는 분위기'], aggressive:['무시당하는 것', '좁은 우리'],
+  gentle:['큰 소리', '다툼이 있는 분위기'], aggressive:['무시당하는 것', '좁은 우리'],
   foodie:['배고픈 상태', '식사 시간이 늦어지는 것'], sensitive:['갑작스러운 변화', '낯선 손길']
 };
 
@@ -1216,17 +1216,18 @@ function buildResultSheet(state,name){
   ];
 
   const imagePrompt =
-    `An original creature character named "${name}", smooth matte clay sculpture, professional collectible vinyl toy design, polished 3D-rendered claymation character, `+
+    `An original claymation character named "${name}", a cute adorable stop-motion claymation creature, handcrafted clay animation character design, chubby chibi doll-like proportions, `+
     `${EN_BODY_SIZE[size]}, ${EN_LEGS[legs]}, ${EN_COVERING[covering]}, `+
-    `smooth clean clay surface with subtle sculpted texture, no visible fingerprints, no rough or amateur imperfections, `+
+    `visible soft hand-sculpted clay texture with gentle fingerprint and tool-mark dimples typical of claymation character design, rounded smooth forms, matte-to-satin clay finish, `+
     `${EN_EYES[eyes]}, ${EN_HORNS[horns]}, `+
+    `small round blush-colored accent dots on the cheeks for extra cuteness, `+
     `${EN_HABITAT_FEATURE[habitat]}, `+
     `a two-tone body color scheme dominated by ${scheme.habitatName} (about 60% of the body) with ${scheme.secondaryName} as a secondary tone (about 30%), `+
     `${EN_PATTERN[tendency]}, `+
     `${EN_POSE[personality]}, `+
     `${EN_PERSONALITY_FEATURE[personality] ? EN_PERSONALITY_FEATURE[personality]+', ' : ''}`+
-    `${EN_MOOD[personality]} mood, clean professional toy-photography art direction, `+
-    `single ${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), no props, no scenery, `+
+    `${EN_MOOD[personality]} mood, cute and charming claymation art direction, like a character from a clay stop-motion animated film, `+
+    `single ${EN_FRAME_SIZE[size]}, pure solid white seamless background (RGB 255,255,255, not off-white or cream), a soft subtle contact shadow directly beneath the creature, no props, no scenery, `+
     `soft even studio lighting with no harsh shadows, `+
     `not felt, not fabric, not fleece, no fuzzy textile texture, no plastic craft googly eyes, `+
     `no text, no logo, no watermark.`;
